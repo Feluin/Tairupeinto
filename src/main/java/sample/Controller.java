@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.layout.*;
 import structure.Structure;
 
@@ -65,5 +67,9 @@ public class Controller implements Initializable {
     public void close(Event actionEvent) {
         Platform.exit();
 
+    }
+
+    public void importJson(DragEvent dragEvent) {
+        Dragboard dragboard = dragEvent.getDragboard();
     }
 }
