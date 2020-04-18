@@ -1,5 +1,6 @@
 package sample;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import graphical.Numberlabel;
 import javafx.application.Platform;
 import javafx.event.Event;
@@ -10,9 +11,13 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import structure.Structure;
+import structure.loadStructure.LoadStucture;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -54,10 +59,10 @@ public class Controller implements Initializable {
     }
 
     private void lockAlgorithm() {
-        if(isLocked){
+        if (isLocked) {
             return;
         }
-        isLocked=true;
+        isLocked = true;
         String selectedAlgorithm = ((RadioMenuItem) toggle.getSelectedToggle()).getText();
         algorithmMenu.setText(selectedAlgorithm);
         algorithmMenu.setDisable(true);
@@ -69,7 +74,23 @@ public class Controller implements Initializable {
 
     }
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     public void importJson(DragEvent dragEvent) {
         Dragboard dragboard = dragEvent.getDragboard();
+        if (dragboard.getFiles().size() == 1) {
+            try {
+                LoadStucture loadStucture = mapper.readValue(dragboard.getFiles().get(0), LoadStucture.class);
+                Structure structure = StructureTransformer.transform(loadStucture);
+                load(structure);
+            } catch (IOException | InvalidStructureExeption e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public void dragover(DragEvent dragEvent) {
+        dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
     }
 }

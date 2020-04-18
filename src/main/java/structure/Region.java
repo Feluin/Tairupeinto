@@ -28,12 +28,8 @@ public class Region {
     }
 
     public void paint(RegionColor color) {
-       if (this.color != color){
-            for (Tile tile : tiles) {
-                tile.paint(color);
-            }
-        }
         this.color=color;
+        tiles.forEach(tile -> tile.paint(color));
 
     }
 

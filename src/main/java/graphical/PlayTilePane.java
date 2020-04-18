@@ -11,14 +11,13 @@ import structure.Tile;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayTilePane extends Pane implements ITileListener {
+public class PlayTilePane extends Pane {
 
 
     public PlayTilePane(Tile tile) {
         this.setPrefHeight(100000);
         this.setPrefWidth(100000);
         drawBorder(tile);
-        tile.addListener(this);
         this.setBackground(gray);
     }
 
@@ -58,7 +57,6 @@ public class PlayTilePane extends Pane implements ITileListener {
     private static Background black = new Background(new BackgroundFill(Color.gray(0.1), null, null));
     private static Background white = new Background(new BackgroundFill(Color.WHITE, null, null));
 
-    @Override
     public void painted(RegionColor color) {
         Platform.runLater(() -> {
                     switch (color) {

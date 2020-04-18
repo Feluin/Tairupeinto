@@ -11,7 +11,6 @@ public class Tile {
     private int y;
     private Region region;
     private RegionColor color;
-    private List<ITileListener> iTileListenerList=new ArrayList<>();
 
     public Tile(int x, int y, Region region) {
         this.x = x;
@@ -36,10 +35,7 @@ public class Tile {
     }
 
 
-    public void paint(RegionColor color) {
-        iTileListenerList.forEach(listener -> listener.painted(color));
-        this.color = color;
-    }
+
 
     public Region getRegion() {
         return region;
@@ -63,7 +59,8 @@ public class Tile {
     public RegionColor getColor() {
         return color;
     }
-    public void addListener(ITileListener listener){
-        iTileListenerList.add(listener);
+
+    public void paint(RegionColor color) {
+        this.color=color;
     }
 }

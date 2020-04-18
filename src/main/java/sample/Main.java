@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import structure.Region;
 import structure.Structure;
 import structure.Tile;
@@ -32,6 +33,7 @@ public class Main extends Application {
             loadStucture.setHorizontalNrs(List.of(2,1,0));
             loadStucture.setVertialNrs(List.of(2,1,0));
             Structure structure = StructureTransformer.transform(loadStucture);
+            primaryStage.initStyle(StageStyle.UNIFIED);
             c.load(structure);
             primaryStage.show();
         } catch (Throwable e) {
