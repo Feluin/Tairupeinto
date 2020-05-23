@@ -58,7 +58,11 @@ public class PlayTilePane extends Pane {
     private static Background white = new Background(new BackgroundFill(Color.WHITE, null, null));
 
     public void painted(RegionColor color) {
+        if(color==null){
+            return;
+        }
         Platform.runLater(() -> {
+
                     switch (color) {
                         case BLACK:
                             this.setBackground(black);
@@ -67,6 +71,7 @@ public class PlayTilePane extends Pane {
                             this.setBackground(white);
                             break;
                         case NONE:
+
                             this.setBackground(gray);
                             break;
 

@@ -32,8 +32,7 @@ public class StructureTransformer {
                 region.addTile(tiles[i][j]);
             }
         }
-        structure.setRegions(regionHashMap.values().stream().sorted(Comparator.comparing(Region::getRegionID)).collect(Collectors.toList()));
-        //TODO Plausibilität Prüfung
+        structure.setRegions(regionHashMap);
         structure.setTiles(tiles);
         structure.setHorizontalNrs(loadStucture.getHorizontalNrs());
         structure.setVerticalNrs(loadStucture.getVertialNrs());

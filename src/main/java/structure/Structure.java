@@ -1,5 +1,7 @@
 package structure;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Structure {
@@ -7,7 +9,12 @@ public class Structure {
 
     private List<Integer> horizontalNrs;
     private List<Integer> vertialNrs;
-    private List<Region> regions;
+
+    public HashMap<Integer, Region> getRegions() {
+        return regions;
+    }
+
+    private HashMap<Integer,Region> regions;
     private Tile[][] tiles;
 
     public void setHorizontalNrs(List<Integer> horizontalNrs) {
@@ -19,12 +26,12 @@ public class Structure {
         this.vertialNrs = vertialNrs;
     }
 
-    public void setRegions(List<Region> regions) {
+    public void setRegions(HashMap<Integer,Region> regions) {
         this.regions = regions;
     }
 
-    public List<Region> getRegions() {
-        return regions;
+    public List<Region> getRegionsList() {
+        return new ArrayList<>(regions.values());
     }
 
     public List<Integer> getVertialNrs() {

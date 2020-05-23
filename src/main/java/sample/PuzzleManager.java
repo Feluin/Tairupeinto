@@ -51,7 +51,7 @@ public class PuzzleManager {
 
         try {
             puzzleAlgorithm.step();
-            updateGui();
+          updateGui();
         } catch (NotSolvablePuzzleException e) {
             e.printStackTrace();
         }

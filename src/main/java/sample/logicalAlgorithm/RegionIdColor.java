@@ -2,16 +2,16 @@ package sample.logicalAlgorithm;
 
 import structure.RegionColor;
 
-public class RegionIdColor {
+public class RegionIdColor implements Cloneable{
 
     private final int id;
-    private final int nr;
+    private final int countInLine;
 
     private RegionColor regionColor=RegionColor.WHITE;
 
     public RegionIdColor(int id, int nr) {
         this.id = id;
-        this.nr = nr;
+        this.countInLine = nr;
     }
 
     public RegionColor getRegionColor() {
@@ -22,11 +22,12 @@ public class RegionIdColor {
         this.regionColor = regionColor;
     }
 
-    public int getNr() {
-        return nr;
+    public int getCountInLine() {
+        return countInLine;
     }
 
     public int getId() {
         return id;
     }
+
 }
