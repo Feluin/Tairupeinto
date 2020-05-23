@@ -33,14 +33,14 @@ public class PuzzleManager {
     }
 
     public static boolean isSolved(Structure structure) {
-        for (int i = 0; i < structure.getHorizontalNrs().size(); i++) {
-            if (structure.getHorizontalNrs().get(i) != Arrays.stream(structure.getTiles()[i]).parallel().filter(tile -> tile.getColor().equals(RegionColor.BLACK)).count()) {
+        for (int i = 0; i < structure.getVerticalNrs().size(); i++) {
+            if (structure.getVerticalNrs().get(i) != Arrays.stream(structure.getTiles()[i]).parallel().filter(tile -> tile.getColor().equals(RegionColor.BLACK)).count()) {
                 return false;
             }
         }
-        for (int i = 0; i < structure.getHorizontalNrs().size(); i++) {
+        for (int i = 0; i < structure.getVerticalNrs().size(); i++) {
             final int n = i;
-            if (structure.getVertialNrs().get(i) != Arrays.stream(structure.getTiles()).parallel().map(tiles -> tiles[n]).filter(tile -> tile.getColor().equals(RegionColor.BLACK)).count()) {
+            if (structure.getHorizontalNrs().get(i) != Arrays.stream(structure.getTiles()).parallel().map(tiles -> tiles[n]).filter(tile -> tile.getColor().equals(RegionColor.BLACK)).count()) {
                 return false;
             }
         }

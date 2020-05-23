@@ -65,5 +65,12 @@ public class PuzzleLine {
     }
 
 
+    public String getNR() {
+        return ""+selectedCombination+"/"+possibleCombinations.size();
+    }
+
+    public void reset() {
+        selectedCombination=0;
+    }
 }
 

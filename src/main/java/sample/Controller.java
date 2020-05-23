@@ -4,14 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import graphical.Numberlabel;
 import javafx.application.Platform;
 import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import structure.Structure;
@@ -32,13 +30,13 @@ public class Controller implements Initializable {
     private boolean isLocked;
 
     public void load(Structure structure) {
-        horizontalBox.getChildren().setAll(structure.getHorizontalNrs().stream().map(Numberlabel::new).collect(Collectors.toList()));
+        horizontalBox.getChildren().setAll(structure.getVerticalNrs().stream().map(Numberlabel::new).collect(Collectors.toList()));
         horizontalBox.getChildren().forEach(node -> HBox.setHgrow(node, Priority.ALWAYS));
-        verticalBox.getChildren().setAll(structure.getVertialNrs().stream().map(Numberlabel::new).collect(Collectors.toList()));
+        verticalBox.getChildren().setAll(structure.getHorizontalNrs().stream().map(Numberlabel::new).collect(Collectors.toList()));
         verticalBox.getChildren().forEach(node -> VBox.setVgrow(node, Priority.ALWAYS));
         playGrid.getChildren().setAll();
-        playGrid.getRowConstraints().setAll(structure.getVertialNrs().stream().map(integer -> new RowConstraints()).collect(Collectors.toList()));
-        playGrid.getColumnConstraints().setAll(structure.getVertialNrs().stream().map(integer -> new ColumnConstraints()).collect(Collectors.toList()));
+        playGrid.getRowConstraints().setAll(structure.getHorizontalNrs().stream().map(integer -> new RowConstraints()).collect(Collectors.toList()));
+        playGrid.getColumnConstraints().setAll(structure.getHorizontalNrs().stream().map(integer -> new ColumnConstraints()).collect(Collectors.toList()));
         manager = new PuzzleManager(playGrid, structure);
     }
 

@@ -5,10 +5,7 @@ import structure.Structure;
 import structure.Tile;
 import structure.loadStructure.LoadStucture;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class StructureTransformer {
 

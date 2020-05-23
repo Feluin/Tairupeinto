@@ -7,8 +7,8 @@ import java.util.List;
 public class Structure {
 
 
+    private List<Integer> verticalNrs;
     private List<Integer> horizontalNrs;
-    private List<Integer> vertialNrs;
 
     public HashMap<Integer, Region> getRegions() {
         return regions;
@@ -17,13 +17,9 @@ public class Structure {
     private HashMap<Integer,Region> regions;
     private Tile[][] tiles;
 
-    public void setHorizontalNrs(List<Integer> horizontalNrs) {
+    public void setVerticalNrs(List<Integer> verticalNrs) {
 
-        this.horizontalNrs = horizontalNrs;
-    }
-
-    public void setVerticalNrs(List<Integer> vertialNrs) {
-        this.vertialNrs = vertialNrs;
+        this.verticalNrs = verticalNrs;
     }
 
     public void setRegions(HashMap<Integer,Region> regions) {
@@ -34,12 +30,12 @@ public class Structure {
         return new ArrayList<>(regions.values());
     }
 
-    public List<Integer> getVertialNrs() {
-        return vertialNrs;
-    }
-
     public List<Integer> getHorizontalNrs() {
         return horizontalNrs;
+    }
+
+    public List<Integer> getVerticalNrs() {
+        return verticalNrs;
     }
 
     public void setTiles(Tile[][] tiles) {
@@ -48,5 +44,9 @@ public class Structure {
 
     public Tile[][] getTiles() {
         return tiles;
+    }
+
+    public void setHorizontalNrs(List<Integer> horizontalNrs) {
+        this.horizontalNrs = horizontalNrs;
     }
 }
